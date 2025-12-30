@@ -3,8 +3,8 @@ import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
 export default function Footer() {
     return (
         <div className="text-center ali p-4 bg-background/5 text-gray-500 text-sm">
-            <p>Created by Sarin Sanyal</p>
-            <div className = "flex justify-center pt-2">
+            <p>Created with ❤️ by IEEE Tech Team</p>
+            {/* <div className = "flex justify-center pt-2">
                 <a
                     href="https://www.linkedin.com/in/sarinsanyal"
                     target="_blank"
@@ -29,7 +29,7 @@ export default function Footer() {
                 >
                     <FaTwitter size={20} />
                 </a>
-            </div>
+            </div> */}
         </div>
     );
 }

@@ -12,7 +12,8 @@ export default function Timeline() {
                     if (entry.isIntersecting) {
                         entry.target.classList.add(
                             "opacity-100",
-                            "translate-y-0"
+                            "translate-y-0",
+                            "scale-100"
                         );
                     }
                 });
@@ -38,52 +39,113 @@ export default function Timeline() {
     ];
 
     return (
-        <div className="ocean-bg min-h-screen flex flex-col bg-gradient-to-b from-[#003f5c] via-[#046b8a] to-[#05a2c2] text-white overflow-hidden">
-            <h2 className="text-center font-extrabold text-4xl lg:text-5xl pt-24 pb-10 text-[#a9e8ff] drop-shadow-lg tracking-wide">
-                TIMELINE
-            </h2>
+        <div className="relative min-h-screen w-full bg-gradient-to-b from-[#003f5c] via-[#046b8a] to-[#05a2c2] text-white overflow-hidden py-16 px-4">
+            {/* Background decorative elements */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-40 right-20 w-96 h-96 bg-[#05a2c2]/10 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-40 left-20 w-80 h-80 bg-[#046b8a]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+            </div>
 
-            <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-28 flex-1">
-                {/* Vertical timeline line */}
-                <div className="absolute top-0 bottom-0 left-10 w-[4px] bg-gradient-to-b from-transparent via-[#a9e8ff] to-transparent opacity-60" />
+            {/* Header */}
+            <div className="relative z-10 flex flex-col font-extrabold text-5xl lg:text-6xl items-center mb-20 drop-shadow-2xl tracking-wide">
+                <div className="relative">
+                    <span className="bg-gradient-to-r from-[#a9e8ff] to-white bg-clip-text text-transparent">
+                        TIMELINE
+                    </span>
+                    <div className="absolute -bottom-3 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#a9e8ff] to-transparent"></div>
+                </div>
+            </div>
 
-                <div className="space-y-24">
+            {/* Subtitle */}
+            <p className="relative z-10 text-center text-lg md:text-xl text-[#e3faff] max-w-3xl mx-auto mb-16 px-4">
+                Join us for an exciting day of innovation, learning, and networking
+            </p>
+
+            <div className="relative max-w-5xl mx-auto px-6 pb-20">
+                {/* Vertical timeline line with gradient */}
+                <div className="absolute top-0 bottom-0 left-4 md:left-10 w-1 bg-gradient-to-b from-[#a9e8ff]/20 via-[#a9e8ff] to-[#a9e8ff]/20 shadow-lg shadow-[#a9e8ff]/50" />
+
+                <div className="space-y-16">
                     {events.map((event, index) => (
                         <div
                             key={index}
                             ref={(el) => {
                                 if (el) itemsRef.current[index] = el;
                             }}
-                            className="relative flex gap-10 opacity-0 translate-y-10 transition-all duration-700 ease-out"
+                            className="relative flex gap-6 md:gap-12 opacity-0 translate-y-16 scale-95 transition-all duration-700 ease-out"
+                            style={{ transitionDelay: `${index * 50}ms` }}
                         >
                             {/* Timeline Node */}
-                            <div className="relative z-10">
-                                <div className="h-12 w-12 rounded-full bg-[#003a52] border border-[#00d8ff]/40 shadow-lg shadow-[#00d8ff]/30 flex items-center justify-center">
-                                    <div className="h-4 w-4 rounded-full bg-[#00d8ff] shadow-md" />
+                            <div className="relative z-20 flex-shrink-0">
+                                <div className="relative">
+                                    {/* Outer glow ring */}
+                                    <div className="absolute -inset-2 bg-gradient-to-r from-[#05a2c2] to-[#a9e8ff] rounded-full opacity-50 blur-lg animate-pulse"></div>
+                                    
+                                    {/* Node circle */}
+                                    <div className="relative h-14 w-14 rounded-full bg-gradient-to-br from-[#046b8a] to-[#003f5c] border-2 border-[#a9e8ff] shadow-xl shadow-[#a9e8ff]/40 flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                                        <div className="h-6 w-6 rounded-full bg-gradient-to-br from-[#00d8ff] to-[#a9e8ff] shadow-lg animate-pulse" />
+                                    </div>
+
+                                    {/* Connecting line to card */}
+                                    <div className="absolute top-1/2 left-full w-6 md:w-12 h-0.5 bg-gradient-to-r from-[#a9e8ff] to-transparent"></div>
                                 </div>
                             </div>
 
-                            {/* Card Wrapper (contrast layer) */}
-                            <div className="relative w-full group">
-                                {/* Glow layer */}
-                                <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-r from-[#00d8ff]/40 to-[#a9e8ff]/30 blur opacity-0 group-hover:opacity-100 transition duration-300" />
+                            {/* Card */}
+                            <div className="relative w-full group flex-1">
+                                {/* Hover glow effect */}
+                                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#05a2c2]/40 to-[#a9e8ff]/40 opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
 
-                                {/* Actual card */}
-                                <div className="relative bg-[#022c3d]/80 backdrop-blur-xl rounded-2xl px-7 py-6 border border-[#a9e8ff]/20 shadow-xl transition-all duration-300 hover:-translate-y-2">
-                                    <div className="text-lg md:text-xl font-extrabold text-[#a9e8ff] mb-2 tracking-wide">
-                                        {event.time}
+                                {/* Main card */}
+                                <div className="relative bg-white/10 backdrop-blur-md rounded-2xl px-6 md:px-8 py-6 border border-white/20 group-hover:border-[#a9e8ff]/50 shadow-2xl transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[#a9e8ff]/30 overflow-hidden">
+                                    {/* Decorative gradient overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-br from-[#a9e8ff]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    
+                                    {/* Time badge */}
+                                    <div className="relative inline-flex items-center gap-2 mb-4">
+                                        <svg className="w-5 h-5 text-[#a9e8ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span className="text-xl md:text-2xl font-bold text-[#a9e8ff] tracking-wide">
+                                            {event.time}
+                                        </span>
                                     </div>
 
-                                    <h3 className="text-white text-2xl md:text-3xl font-medium leading-snug">
+                                    {/* Title */}
+                                    <h3 className="relative text-white text-xl md:text-2xl font-semibold leading-relaxed mb-4">
                                         {event.title}
                                     </h3>
 
-                                    {/* Accent bar */}
-                                    <div className="mt-5 h-[3px] w-14 bg-[#00d8ff] rounded-full opacity-80 group-hover:w-28 transition-all duration-300" />
+                                    {/* Decorative elements */}
+                                    <div className="flex items-center gap-2 mt-4">
+                                        <div className="h-1 w-16 bg-gradient-to-r from-[#a9e8ff] to-transparent rounded-full group-hover:w-32 transition-all duration-500"></div>
+                                        <div className="h-1 w-1 bg-[#a9e8ff] rounded-full opacity-50"></div>
+                                        <div className="h-1 w-1 bg-[#a9e8ff] rounded-full opacity-30"></div>
+                                    </div>
+
+                                    {/* Corner accent */}
+                                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#a9e8ff]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 </div>
                             </div>
                         </div>
                     ))}
+                </div>
+
+                {/* End marker */}
+                <div className="relative flex justify-start mt-8 ml-4 md:ml-10">
+                    <div className="relative">
+                        <div className="absolute -inset-3 bg-gradient-to-r from-[#05a2c2] to-[#a9e8ff] rounded-full opacity-50 blur-xl"></div>
+                        <div className="relative h-8 w-8 rounded-full bg-gradient-to-br from-[#a9e8ff] to-[#05a2c2] shadow-xl"></div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Bottom decoration */}
+            <div className="relative z-10 max-w-4xl mx-auto mt-12 px-4">
+                <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center">
+                    <p className="text-[#e3faff] text-sm md:text-base italic">
+                        All times are subject to change. Stay tuned for updates!
+                    </p>
                 </div>
             </div>
         </div>
