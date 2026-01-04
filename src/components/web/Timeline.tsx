@@ -96,6 +96,7 @@ export default function Timeline() {
 
   return (
     <section
+      id="timeline"
       ref={containerRef}
       className="bg-black text-white py-24 px-6 md:px-12 min-h-screen relative z-20"
     >

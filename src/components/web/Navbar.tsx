@@ -11,9 +11,8 @@ export default function Navbar() {
   const navLinks = [
     { href: "/", name: "Home" },
     { href: "#about", name: "About" },
+    { href: "#events", name: "Events" },
     { href: "#timeline", name: "Timeline" },
-    { href: "#venue", name: "Venue" },
-    { href: "#speakers", name: "Speakers" },
   ];
 
   return (
@@ -25,7 +24,7 @@ export default function Navbar() {
             {/* Logo Image */}
             <div className="relative h-12 w-[200px] md:w-[250px]">
               <Image
-                src="/hello.webp"
+                src="/Hello.webp"
                 alt="Think Forward Logo"
                 fill
                 className="object-contain"
@@ -38,18 +37,18 @@ export default function Navbar() {
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center space-x-12 xl:space-x-16">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               className="text-xs font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
 
         {/* Right Side Action (Desktop) */}
-        <div className="hidden md:flex items-center pl-8 border-l border-white/20 h-8">
+        <div className="hidden lg:flex items-center pl-8 border-l border-white/20 h-8">
           <a
             href="/register"
             className="group flex items-center gap-2 text-sm md:text-xs font-bold tracking-widest text-white hover:text-[#8EC5FF] transition-colors uppercase"
@@ -64,7 +63,11 @@ export default function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-white focus:outline-none"
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? (
+              <X className="w-10 h-10 p-1.5 border border-[#013860] rounded-md" />
+            ) : (
+              <Menu className="w-10 h-10 p-1.5 border border-[#013860] rounded-md" />
+            )}
           </button>
         </div>
 
@@ -75,19 +78,19 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-center text-sm font-bold tracking-wider text-gray-300 hover:text-white transition-colors uppercase py-2"
+                className="text-center text-sm font-bold tracking-wider text-gray-300 uppercase py-2 px-1 shadow-[inset_0_0_0_0_#54b3d611] transition-[color,box-shadow] duration-300 ease-in-out hover:text-white hover:shadow-[inset_100vw_0_0_0_#54b3d611]"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}
               </a>
             ))}
             <div className="border-t border-gray-800 pt-4 flex justify-center">
-              <a
-                href="#"
-                className="flex items-center gap-2 text-white hover:text-[#8EC5FF] font-bold uppercase text-sm tracking-widest"
+              <Link
+                href="/register"
+                className="text-center text-sm font-bold tracking-wider text-gray-300 uppercase w-full py-2 px-1 shadow-[inset_0_0_0_0_#54b3d611] transition-[color,box-shadow] duration-300 ease-in-out hover:text-white hover:shadow-[inset_100vw_0_0_0_#54b3d611]"
               >
                 Register
-              </a>
+              </Link>
             </div>
           </div>
         )}

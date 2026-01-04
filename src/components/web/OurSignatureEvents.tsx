@@ -58,7 +58,7 @@ export default function OurSignatureEvents() {
   ];
 
   return (
-    <section ref={sectionRef} className="bg-white text-black relative z-10">
+    <section id="events" ref={sectionRef} className="bg-white text-black relative z-10">
       <div className="w-full flex flex-col lg:flex-row max-w-[1600px] mx-auto">
         {/* Left Sticky Content */}
         <div className="w-full lg:w-[40%] flex flex-col justify-center px-6 md:px-12 py-16 lg:py-0 bg-white lg:h-screen lg:sticky lg:top-0">

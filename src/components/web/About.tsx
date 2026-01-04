@@ -96,6 +96,7 @@ export default function About() {
 
   return (
     <section
+      id="about"
       ref={containerRef}
       className="relative w-full bg-white text-black pt-24 pb-12 md:pt-32 md:pb-16 px-6 md:px-12 rounded-t-[2rem] md:rounded-t-[3rem] mt-0 z-20"
     >
