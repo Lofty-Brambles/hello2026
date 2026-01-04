@@ -22,13 +22,13 @@
 // 				<span className="font-medium text-[#c7f4ff] sm:text-xl md:text-2xl">presents</span>
 // 			</main>
 
-// 			<div className="text-4xl sm:text-6xl md:text-8xl font-extrabold 
+// 			<div className="text-4xl sm:text-6xl md:text-8xl font-extrabold
 // 				bg-gradient-to-r from-[#ced0f0] via-[#100abb] to-[#2f51e7]
 // 				text-transparent bg-clip-text drop-shadow-lg animate-pulse pt-6 pb-6 mt-7">
 // 				Hello IEEE 2026
 // 			</div>
 
-// 			<div className="pr-6 pl-6 md:pr-20 md:pl-20 mb-10 font-semibold text-xl md:text-2xl z-10 lg:text-3xl 
+// 			<div className="pr-6 pl-6 md:pr-20 md:pl-20 mb-10 font-semibold text-xl md:text-2xl z-10 lg:text-3xl
 // 				bg-clip-text text-transparent bg-gradient-to-b from-[#e2faff] to-white drop-shadow-sm">
 // 				Dive into the world where dreams become true, hand in hand with us as we attempt to enlighten your path!
 // 			</div>
@@ -68,23 +68,23 @@ import Timeline from "@/components/TimelineSection";
 import Venue from "@/components/VenueSection";
 
 export default function Home() {
-    return (
-        <div>
-        <div id="home">
-            <HeroSection />
-        </div>
-        <div id="about">
-            <AboutSection />
-        </div>
-        <div id="timeline">
-            <Timeline />
-        </div>
-        <div id="speakers">
-            <SpeakerSection />
-        </div>
-        <div id="venue">
-            <Venue />
-        </div>
-        </div>
-    );
+  return (
+    <div>
+      <div id="home">
+        <HeroSection />
+      </div>
+      <div id="about">
+        <AboutSection />
+      </div>
+      <div id="timeline">
+        <Timeline />
+      </div>
+      <div id="speakers">
+        <SpeakerSection />
+      </div>
+      <div id="venue">
+        <Venue />
+      </div>
+    </div>
+  );
 }

@@ -5,253 +5,294 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 // import { FcGoogle } from "react-icons/fc";
 import { Button } from "@/components/ui/button";
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select"
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 type RegisterData = {
-	name: string;
-	email: string;
-	phone: string;
-	department: string;
-	year: string;
-	password: string;
-	confirmPassword: string;
+  name: string;
+  email: string;
+  phone: string;
+  department: string;
+  year: string;
+  password: string;
+  confirmPassword: string;
 };
 
 const DEPARTMENTS = [
-	"Architecture",
-	"Chemical Engineering",
-	"Civil Engineering",
-	"Computer Science & Engineering",
-	"Construction Engineering",
-	"Electrical Engineering",
-	"Electronics & Telecommunication Engineering",
-	"Food Technology & Biochemical Engineering",
-	"Information Technology",
-	"Instrumentation & Electronics Engineering",
-	"Mechanical Engineering",
-	"Metallurgical & Material Engineering",
-	"Pharmaceutical Technology",
-	"Power Engineering",
-	"Printing Engineering",
-	"Production Engineering",
+  "Architecture",
+  "Chemical Engineering",
+  "Civil Engineering",
+  "Computer Science & Engineering",
+  "Construction Engineering",
+  "Electrical Engineering",
+  "Electronics & Telecommunication Engineering",
+  "Food Technology & Biochemical Engineering",
+  "Information Technology",
+  "Instrumentation & Electronics Engineering",
+  "Mechanical Engineering",
+  "Metallurgical & Material Engineering",
+  "Pharmaceutical Technology",
+  "Power Engineering",
+  "Printing Engineering",
+  "Production Engineering",
 ] as const;
 
 export default function Register() {
-	const [loading, setLoading] = useState(false);
-	const router = useRouter();
-	// const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  // const [user, setUser] = useState(null);
 
-	const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-	const {
-		// register,
-		handleSubmit,
-		control,
-		watch,
-		formState: { errors, isValid },
-	} = useForm<RegisterData>({
-		mode: "onChange",
-	});
+  const {
+    // register,
+    handleSubmit,
+    control,
+    watch,
+    formState: { errors, isValid },
+  } = useForm<RegisterData>({
+    mode: "onChange",
+  });
 
-	const onSubmit = async (data: RegisterData) => {
-		// console.log("\nUser Registration Data: ", data);
-		setLoading(true);
-		console.log("User is being registered...")
-		try {
-			const response = await fetch('/api/register', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(data)
-			});
+  const onSubmit = async (data: RegisterData) => {
+    // console.log("\nUser Registration Data: ", data);
+    setLoading(true);
+    console.log("User is being registered...");
+    try {
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-			const result = await response.json();
+      const result = await response.json();
 
-			if (response.ok) {
-				console.log("Registration Successfull! ", result);
-				alert("Registration Successful! Redirecting to login page...");
-				router.push("/login");
-			}
-			else {
-				console.error("Registration Failed: ", result.error);
-				alert(result.error);
-			}
+      if (response.ok) {
+        console.log("Registration Successfull! ", result);
+        alert("Registration Successful! Redirecting to login page...");
+        router.push("/login");
+      } else {
+        console.error("Registration Failed: ", result.error);
+        alert(result.error);
+      }
+    } catch (error) {
+      console.error("Error During Registration!! ", error);
+    }
+    setLoading(false);
+  };
 
-		} catch (error) {
-			console.error("Error During Registration!! ", error);
-		}
-		setLoading(false);
-	};
+  return (
+    <div className="ocean-bg flex min-h-screen items-center justify-center px-4 md:px-8 lg:px-16 text-white drop-shadow-[0_0_10px_rgba(0,0,0,0.7)]">
+      <div className="hidden lg:flex flex-col text-center justify-center pt-12 pb-12 w-1/2">
+        <h1 className="text-5xl font-extrabold mb-4 leading-tight drop-shadow-xl text-white">
+          From dark pits of oblivion to the hallows of glory,
+        </h1>
+        <h1
+          className="text-5xl font-extrabold bg-clip-text text-transparent 
+	bg-gradient-to-r from-cyan-200 via-blue-300 to-purple-400 animate-pulse drop-shadow-[0_0_8px_rgba(0,0,0,0.6)]"
+        >
+          Begin this galactic event with a bang!
+        </h1>
+      </div>
 
-	return (
-		<div className="ocean-bg flex min-h-screen items-center justify-center px-4 md:px-8 lg:px-16 text-white drop-shadow-[0_0_10px_rgba(0,0,0,0.7)]">
-			<div className="hidden lg:flex flex-col text-center justify-center pt-12 pb-12 w-1/2">
-				<h1 className="text-5xl font-extrabold mb-4 leading-tight drop-shadow-xl text-white">
-					From dark pits of oblivion to the hallows of glory,
-				</h1>
-				<h1 className="text-5xl font-extrabold bg-clip-text text-transparent 
-	bg-gradient-to-r from-cyan-200 via-blue-300 to-purple-400 animate-pulse drop-shadow-[0_0_8px_rgba(0,0,0,0.6)]">
+      <div className="w-full sm:w-96 lg:w-1/2 flex justify-center">
+        <Card
+          className="w-full max-w-md shadow-2xl border border-white/30 
+	backdrop-blur-2xl bg-white/20 hover:bg-white/30 transition-all duration-500 text-black"
+        >
+          <CardHeader>
+            <CardTitle className="text-center text-3xl font-extrabold tracking-wide drop-shadow-lg">
+              Register
+            </CardTitle>
+          </CardHeader>
 
-					Begin this galactic event with a bang!
-				</h1>
-			</div>
+          <CardContent>
+            <Form {...useForm<RegisterData>()}>
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-black">
+                <FormField
+                  control={control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          placeholder="Enter your name"
+                          className="bg-white/30 text-black placeholder-white/80 border-white/40 focus:border-cyan-300"
+                        />
+                      </FormControl>
+                      <FormMessage>{errors.name?.message}</FormMessage>
+                    </FormItem>
+                  )}
+                />
 
+                <FormField
+                  control={control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          type="email"
+                          placeholder="Enter your email"
+                          className="bg-white/30 text-black placeholder-white/80 border-white/40 focus:border-cyan-300"
+                        />
+                      </FormControl>
+                      <FormMessage>{errors.email?.message}</FormMessage>
+                    </FormItem>
+                  )}
+                />
 
-			<div className="w-full sm:w-96 lg:w-1/2 flex justify-center">
-				<Card className="w-full max-w-md shadow-2xl border border-white/30 
-	backdrop-blur-2xl bg-white/20 hover:bg-white/30 transition-all duration-500 text-black">
-					<CardHeader>
-						<CardTitle className="text-center text-3xl font-extrabold tracking-wide drop-shadow-lg">
-							Register
-						</CardTitle>
-					</CardHeader>
+                <FormField
+                  control={control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          type="tel"
+                          placeholder="Enter your phone number"
+                          className="bg-white/30 text-black placeholder-white/80 border-white/40 focus:border-cyan-300"
+                        />
+                      </FormControl>
+                      <FormMessage>{errors.phone?.message}</FormMessage>
+                    </FormItem>
+                  )}
+                />
 
-					<CardContent>
-						<Form {...useForm<RegisterData>()}>
-							<form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-black">
+                <FormField
+                  control={control}
+                  name="department"
+                  render={({ field }) => (
+                    <FormItem>
+                      {/* Optional: Add a Label if needed <FormLabel>Department</FormLabel> */}
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger className="bg-white/30 text-black border-white/40 focus:ring-cyan-300 focus:ring-offset-0 w-full">
+                            <SelectValue
+                              placeholder="Select your department"
+                              className="placeholder-white/80"
+                            />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {DEPARTMENTS.map((dept) => (
+                            <SelectItem key={dept} value={dept}>
+                              {dept}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage>{errors.department?.message}</FormMessage>
+                    </FormItem>
+                  )}
+                />
 
+                <FormField
+                  control={control}
+                  name="year"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          type="tel"
+                          placeholder="Enter your year of graduation"
+                          className="bg-white/30 text-black placeholder-white/80 border-white/40 focus:border-cyan-300"
+                        />
+                      </FormControl>
+                      <FormMessage>{errors.year?.message}</FormMessage>
+                    </FormItem>
+                  )}
+                />
 
-								<FormField control={control} name="name" render={({ field }) => (
-									<FormItem>
-										<FormControl>
-											<Input {...field} placeholder="Enter your name"
-												className="bg-white/30 text-black placeholder-white/80 border-white/40 focus:border-cyan-300" />
-										</FormControl>
-										<FormMessage>{errors.name?.message}</FormMessage>
-									</FormItem>
-								)} />
+                <FormField
+                  control={control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <div className="relative">
+                          <Input
+                            {...field}
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Enter your password"
+                            className="bg-white/30 text-black placeholder-white/80 border-white/40 focus:border-cyan-300"
+                          />
+                          <button
+                            type="button"
+                            className="absolute right-2 top-2 opacity-70"
+                            onClick={() => setShowPassword(!showPassword)}
+                          >
+                            {showPassword ? (
+                              <AiOutlineEyeInvisible size={20} />
+                            ) : (
+                              <AiOutlineEye size={20} />
+                            )}
+                          </button>
+                        </div>
+                      </FormControl>
+                      <FormMessage>{errors.password?.message}</FormMessage>
+                    </FormItem>
+                  )}
+                />
 
-								<FormField control={control} name="email" render={({ field }) => (
-									<FormItem>
-										<FormControl>
-											<Input {...field} type="email" placeholder="Enter your email"
-												className="bg-white/30 text-black placeholder-white/80 border-white/40 focus:border-cyan-300" />
-										</FormControl>
-										<FormMessage>{errors.email?.message}</FormMessage>
-									</FormItem>
-								)} />
+                <FormField
+                  control={control}
+                  name="confirmPassword"
+                  rules={{
+                    validate: (value) => value === watch("password") || "Passwords do not match",
+                  }}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <div className="relative">
+                          <Input
+                            {...field}
+                            type={"password"}
+                            placeholder="Confirm your password"
+                            className="bg-white/30 text-black placeholder-white/80 border-white/40 focus:border-cyan-300"
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage>{errors.confirmPassword?.message}</FormMessage>
+                    </FormItem>
+                  )}
+                />
 
-								<FormField control={control} name="phone" render={({ field }) => (
-									<FormItem>
-										<FormControl>
-											<Input {...field}
-												type="tel"
-												placeholder="Enter your phone number"
-												className="bg-white/30 text-black placeholder-white/80 border-white/40 focus:border-cyan-300" />
-										</FormControl>
-										<FormMessage>{errors.phone?.message}</FormMessage>
-									</FormItem>
-								)} />
+                <Button
+                  type="submit"
+                  className="cursor-pointer w-full font-bold text-lg py-2 hover:scale-[1.03] transition-all"
+                  disabled={!isValid || loading}
+                >
+                  {loading ? "Registering..." : "Register"}
+                </Button>
+              </form>
+            </Form>
 
-								<FormField
-									control={control}
-									name="department"
-									render={({ field }) => (
-										<FormItem>
-											{/* Optional: Add a Label if needed <FormLabel>Department</FormLabel> */}
-											<Select onValueChange={field.onChange} defaultValue={field.value}>
-												<FormControl>
-													<SelectTrigger className="bg-white/30 text-black border-white/40 focus:ring-cyan-300 focus:ring-offset-0 w-full">
-														<SelectValue placeholder="Select your department" className="placeholder-white/80" />
-													</SelectTrigger>
-												</FormControl>
-												<SelectContent>
-													{DEPARTMENTS.map((dept) => (
-														<SelectItem key={dept} value={dept}>
-															{dept}
-														</SelectItem>
-													))}
-												</SelectContent>
-											</Select>
-											<FormMessage>{errors.department?.message}</FormMessage>
-										</FormItem>
-									)}
-								/>
-
-								<FormField control={control} name="year" render={({ field }) => (
-									<FormItem>
-										<FormControl>
-											<Input {...field}
-												type="tel"
-												placeholder="Enter your year of graduation"
-												className="bg-white/30 text-black placeholder-white/80 border-white/40 focus:border-cyan-300" />
-										</FormControl>
-										<FormMessage>{errors.year?.message}</FormMessage>
-									</FormItem>
-								)} />
-
-
-								<FormField control={control} name="password" render={({ field }) => (
-									<FormItem>
-										<FormControl>
-											<div className="relative">
-												<Input {...field} type={showPassword ? "text" : "password"}
-													placeholder="Enter your password"
-													className="bg-white/30 text-black placeholder-white/80 border-white/40 focus:border-cyan-300" />
-												<button type="button" className="absolute right-2 top-2 opacity-70"
-													onClick={() => setShowPassword(!showPassword)}>
-													{showPassword ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
-												</button>
-											</div>
-										</FormControl>
-										<FormMessage>{errors.password?.message}</FormMessage>
-									</FormItem>
-								)} />
-
-								<FormField
-									control={control}
-									name="confirmPassword"
-									rules={{
-										validate: (value) => value === watch("password") || "Passwords do not match"
-									}}
-									render={({ field }) => (
-										<FormItem>
-											<FormControl>
-												<div className="relative">
-													<Input {...field} type={"password"}
-														placeholder="Confirm your password"
-														className="bg-white/30 text-black placeholder-white/80 border-white/40 focus:border-cyan-300" />
-												</div>
-											</FormControl>
-											<FormMessage>{errors.confirmPassword?.message}</FormMessage>
-										</FormItem>
-									)} />
-
-								<Button type="submit"
-									className="cursor-pointer w-full font-bold text-lg py-2 hover:scale-[1.03] transition-all"
-									disabled={!isValid || loading}>
-									{loading ? "Registering..." : "Register"}
-								</Button>
-							</form>
-						</Form>
-
-						<p className="mt-4 text-center text-sm">
-							Already Registered?{" "}
-							<Link href="/login" className="text-cyan-800 hover:underline">Login</Link>
-						</p>
-					</CardContent>
-				</Card>
-			</div>
-
-		</div>
-	);
-
+            <p className="mt-4 text-center text-sm">
+              Already Registered?{" "}
+              <Link href="/login" className="text-cyan-800 hover:underline">
+                Login
+              </Link>
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
 }

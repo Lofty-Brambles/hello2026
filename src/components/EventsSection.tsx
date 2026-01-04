@@ -1,4 +1,3 @@
-
 // DoubleSlash
 
 // ElevateX
@@ -8,9 +7,9 @@
 // ReWired
 
 export default function EventsSection() {
-    return (
-        <div>
-            <h2>Events Section</h2>
-        </div>
-    );
+  return (
+    <div>
+      <h2>Events Section</h2>
+    </div>
+  );
 }

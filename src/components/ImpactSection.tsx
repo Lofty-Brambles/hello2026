@@ -1,5 +1,3 @@
-
-
 // Footfall
 
 // Website visits
@@ -9,9 +7,9 @@
 // Social proof
 
 export default function ImpactSection() {
-    return (
-        <div>
-            <h2>Impact Section</h2>
-        </div>
-    );
+  return (
+    <div>
+      <h2>Impact Section</h2>
+    </div>
+  );
 }

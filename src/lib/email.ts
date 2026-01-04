@@ -10,10 +10,10 @@ const transporter = nodemailer.createTransport({
 
 // --- EMAIL 1: REGISTRATION CONFIRMATION (FORMAL) ---
 export async function sendRegistrationEmail(
-  email: string, 
-  name: string, 
-  phone: string, 
-  department: string
+  email: string,
+  name: string,
+  phone: string,
+  department: string,
 ) {
   const mailOptions = {
     from: '"IEEE Jadavpur University" <jaduniv.ieee@gmail.com>',
@@ -76,11 +76,7 @@ export async function sendRegistrationEmail(
 }
 
 // --- EMAIL 2: ATTENDANCE & LUNCH COUPON (FORMAL) ---
-export async function sendAttendanceEmail(
-  email: string, 
-  name: string, 
-  phone: string
-) {
+export async function sendAttendanceEmail(email: string, name: string, phone: string) {
   const mailOptions = {
     from: '"IEEE Jadavpur University" <jaduniv.ieee@gmail.com>',
     to: email,
@@ -102,7 +98,7 @@ export async function sendAttendanceEmail(
           <div style="text-align: left; max-width: 300px; margin: 0 auto; border-top: 1px solid #ddd; padding-top: 15px;">
             <p style="margin: 8px 0;"><strong>Name:</strong> ${name}</p>
             <p style="margin: 8px 0;"><strong>Phone:</strong> ${phone}</p>
-            <p style="margin: 8px 0; font-size: 12px; color: #888;">Attendance Recorded on: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
+            <p style="margin: 8px 0; font-size: 12px; color: #888;">Attendance Recorded on: ${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}</p>
           </div>
         </div>
 

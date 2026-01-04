@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: "/", name: "Home"},
-    { href: "#about", name: "About"},
+    { href: "/", name: "Home" },
+    { href: "#about", name: "About" },
     { href: "#timeline", name: "Timeline" },
     { href: "#venue", name: "Venue" },
     { href: "#speakers", name: "Speakers" },
@@ -19,32 +19,28 @@ export default function Navbar() {
   return (
     <nav className="w-full z-50 relative pt-6 md:pt-8">
       <div className="max-w-[1800px] mx-auto px-6 md:px-12 flex items-center justify-between">
-        
-{/* Logo Section */}
-<div className="flex-shrink-0 flex items-center gap-3">
-  <Link href="#" className="flex items-center gap-3 group">
-
-    {/* Logo Image */}
-    <div className="relative h-12 w-[200px] md:w-[250px]">
-      <Image
-        src="/hello.webp"
-        alt="Think Forward Logo"
-        fill
-        className="object-contain"
-        priority
-      />
-    </div>
-
-  </Link>
-</div>
-
+        {/* Logo Section */}
+        <div className="flex-shrink-0 flex items-center gap-3">
+          <Link href="#" className="flex items-center gap-3 group">
+            {/* Logo Image */}
+            <div className="relative h-12 w-[200px] md:w-[250px]">
+              <Image
+                src="/hello.webp"
+                alt="Think Forward Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </Link>
+        </div>
 
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center space-x-12 xl:space-x-16">
           {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
+            <a
+              key={link.name}
+              href={link.href}
               className="text-xs font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors uppercase"
             >
               {link.name}
@@ -54,14 +50,17 @@ export default function Navbar() {
 
         {/* Right Side Action (Desktop) */}
         <div className="hidden md:flex items-center pl-8 border-l border-white/20 h-8">
-          <a href="#" className="group flex items-center gap-2 text-sm md:text-xs font-bold tracking-widest text-white hover:text-[#8EC5FF] transition-colors uppercase">
+          <a
+            href="/register"
+            className="group flex items-center gap-2 text-sm md:text-xs font-bold tracking-widest text-white hover:text-[#8EC5FF] transition-colors uppercase"
+          >
             <span>Register</span>
           </a>
         </div>
 
         {/* Mobile Menu Toggle */}
         <div className="lg:hidden flex items-center">
-          <button 
+          <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-white focus:outline-none"
           >
@@ -73,9 +72,9 @@ export default function Navbar() {
         {isMobileMenuOpen && (
           <div className="absolute top-24 left-6 right-6 bg-[#111] border border-gray-800 rounded-lg p-6 flex flex-col space-y-6 lg:hidden shadow-2xl z-50 animate-in fade-in slide-in-from-top-4 duration-200">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
+              <a
+                key={link.name}
+                href={link.href}
                 className="text-center text-sm font-bold tracking-wider text-gray-300 hover:text-white transition-colors uppercase py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -83,8 +82,11 @@ export default function Navbar() {
               </a>
             ))}
             <div className="border-t border-gray-800 pt-4 flex justify-center">
-              <a href="#" className="flex items-center gap-2 text-white hover:text-[#8EC5FF] font-bold uppercase text-sm tracking-widest">
-                 Register
+              <a
+                href="#"
+                className="flex items-center gap-2 text-white hover:text-[#8EC5FF] font-bold uppercase text-sm tracking-widest"
+              >
+                Register
               </a>
             </div>
           </div>
@@ -92,4 +94,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-};
+}

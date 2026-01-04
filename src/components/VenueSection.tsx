@@ -1,17 +1,17 @@
-"use client"
+"use client";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import React from 'react';
-import { MapPin, Mail, Navigation } from 'lucide-react';
+import React from "react";
+import { MapPin, Mail, Navigation } from "lucide-react";
 
 const containerStyle = {
-  width: '50vw',
-  height: '50vh'
+  width: "50vw",
+  height: "50vh",
 };
 
 const center = {
   lat: 22.4983409862929,
-  lng: 88.37120718718914
+  lng: 88.37120718718914,
 };
 
 export default function Venue() {
@@ -37,7 +37,6 @@ export default function Venue() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="flex flex-col lg:flex-row gap-8 items-start">
-
           {/* Map Section */}
           <div className="w-full lg:w-1/2">
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-[1.02] transition-transform duration-300">
@@ -58,12 +57,9 @@ export default function Venue() {
 
           {/* Info Section */}
           <div className="w-full lg:w-1/2 space-y-6">
-
             {/* University Name */}
             <div className="text-center lg:text-left">
-              <h2 className="text-4xl font-extrabold text-gray-800 mb-2">
-                Jadavpur University
-              </h2>
+              <h2 className="text-4xl font-extrabold text-gray-800 mb-2">Jadavpur University</h2>
               <p className="text-gray-600 text-lg">A Premier Institution of Learning</p>
             </div>
 
@@ -80,7 +76,8 @@ export default function Venue() {
                     DR. TRIGUNA SEN AUDITORIUM
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    188, Raja Subodh Chandra Mallick Rd, Jadavpur University Campus Area, Jadavpur, Kolkata, West Bengal 700032
+                    188, Raja Subodh Chandra Mallick Rd, Jadavpur University Campus Area, Jadavpur,
+                    Kolkata, West Bengal 700032
                   </p>
                 </div>
               </div>
@@ -115,7 +112,6 @@ export default function Venue() {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>

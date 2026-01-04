@@ -17,10 +17,11 @@ export default function Navbar() {
 
   return (
     <div className="fixed top-0 left-1/2 -translate-x-1/2 w-auto md:w-[90%] lg:w-auto mt-5 z-50">
-      <div className="backdrop-blur-md bg-white/10 dark:bg-black/20 
+      <div
+        className="backdrop-blur-md bg-white/10 dark:bg-black/20 
       p-4 rounded-full flex justify-between items-center 
-      shadow-xl border border-white/20">
-
+      shadow-xl border border-white/20"
+      >
         {/* Navigation Buttons */}
         <div className="flex gap-4 md:gap-6 items-center">
           {navItems.map(({ href, label, icon }) => {
@@ -53,7 +54,6 @@ export default function Navbar() {
             Register!
           </Link>
         </div>
-
       </div>
     </div>
   );

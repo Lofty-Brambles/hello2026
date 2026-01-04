@@ -1,8 +1,8 @@
-import Hero from '@/components/web/Hero';
-import About from '@/components/web/About';
-import WhatToExpect from '@/components/web/WhatToExpect';
-import OurSignatureEvents from '@/components/web/OurSignatureEvents';
-import Timeline from '@/components/web/Timeline';
+import Hero from "@/components/web/Hero";
+import About from "@/components/web/About";
+import WhatToExpect from "@/components/web/WhatToExpect";
+import OurSignatureEvents from "@/components/web/OurSignatureEvents";
+import Timeline from "@/components/web/Timeline";
 // import SpecialGuests from './components/SpecialGuests';
 // import TrustedBy from './components/TrustedBy';
 // import TicketCTA from './components/TicketCTA';
@@ -14,7 +14,7 @@ export default function TestPage() {
       <Hero />
       <About />
       <WhatToExpect />
-      <OurSignatureEvents/>
+      <OurSignatureEvents />
       <Timeline />
       {/*<SpecialGuests />
       <TrustedBy />
@@ -22,4 +22,4 @@ export default function TestPage() {
       <VenueAndContact /> */}
     </div>
   );
-};
+}
