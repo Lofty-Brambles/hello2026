@@ -5,11 +5,14 @@ import Navbar from "./Navbar";
 import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import Image from "next/image";
+import { useCountdown } from "@/lib/hooks/countdown";
 
 export default function Hero() {
   const [, setMounted] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
+
+  const [days, hours, minutes, seconds] = useCountdown(1768458600000);
 
   useEffect(() => {
     setMounted(true);
@@ -96,7 +99,7 @@ export default function Hero() {
             {/* Line 2 */}
             <div className="overflow-hidden w-full flex items-center justify-center lg:justify-start gap-4 md:gap-8 flex-wrap">
               <h1 className="hero-text text-[15vw] lg:text-[10vw] leading-[0.85] font-black tracking-tighter text-white uppercase">
-                IEEE 2.0&nbsp;&nbsp;
+                IEEE 2.0<span className="hidden bin:inline">&nbsp;&nbsp;</span>
               </h1>
 
               {/* <div className="hero-text hidden lg:block w-[10vw] h-[2vw] relative mb-4">
@@ -105,7 +108,7 @@ export default function Hero() {
                                         stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </div> */}
-              <div className="hero-text hidden lg:block w-[12vw] h-[2.4vw] relative mb-4">
+              <div className="hero-text hidden bin:block w-[12vw] h-[2.4vw] relative mb-4">
                 <svg viewBox="0 0 120 24" className="w-full h-full text-[#8EC5FF]">
                   <path
                     d=" M2 12 
@@ -276,8 +279,8 @@ export default function Hero() {
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 items-end pb-8 md:pb-12">
           {/* Bottom Left: Stationary Countdown */}
           <div className="hero-ui flex flex-col gap-2 items-center lg:items-start">
-            <div className="font-mono text-3xl sm:text-4xl md:text-5xl text-white tracking-widest font-bold opacity-90 text-center lg:text-left">
-              10:10:10
+            <div className="font-mono text-xl sm:text-3xl md:text-4xl text-white tracking-widest font-bold opacity-90 text-center lg:text-left">
+              {days}d:{hours}h:{minutes}m:{seconds}s
             </div>
           </div>
 
@@ -341,7 +344,7 @@ export default function Hero() {
                     className="w-12 h-12 rounded-full border-2 border-black overflow-hidden bg-gray-800 relative z-0 hover:z-10 hover:scale-110 transition-transform duration-200"
                   >
                     <Image
-                      src={`https://i.pravatar.cc/150?img=${i + 25}`}
+                      src={`https://robohash.org/random${i}`}
                       alt="Attendee"
                       className="w-full h-full object-cover"
                       width={50}
